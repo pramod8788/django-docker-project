@@ -1,0 +1,141 @@
+{% extends 'ecommerce/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+  <!-- Carousel starts -->
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      
+      {% comment %} This for loop is used for slides number {% endcomment %}
+      {% for item in carousel %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter }}"
+        aria-label="Slide {{ forloop.counter|add:1 }}"></button>
+      {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="{% url 'category-page' carousel.first.category.category %}">
+          <img src="{{ carousel.first.image.url }}" class="d-block w-100">
+          <h2>{{ carousel.first.desc }}... {{ carousel.first.offer }}% Off</h2>
+          <p>Click to see more...</p>
+        </a>
+      </div>
+
+      {% for item in carousel %}
+      {% if not forloop.first %}
+      <div class="carousel-item">
+        <a href="{% url 'category-page' item.category.category %}">
+          <img src="{{ item.image.url }}" class="d-block w-100">
+          <h2>{{ item.desc }}... {{ item.offer }}% Off</h2>
+          <p>Click to see more...</p>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Carousel ends -->
+
+  <!-- Container div 1 starts -->
+
+  <div class="container">
+    <h3>New Home Decor Products</h3> <br>
+    <div class="feature-product">
+      {% for item in homedecor_prod %}
+      <div class="card" style="width: 16rem;">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'product-detail' category=item|to_model_name slug=item.slug %}">
+            <img src="{{ item.image1.url }}" height=140>
+          </a>
+        </div>
+        <h4>{{ item.prod_name|slice:":24" }}...</h4>
+        <h5>&#8377; {{ item.price|intcomma }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3>New Fashion Products</h3> <br>
+    <div class="feature-product">
+      {% for item in fashion_prod %}
+      <div class="card" style="width: 16rem;">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'product-detail' category=item|to_model_name slug=item.slug %}">
+            <img src="{{ item.image1.url }}" height=140>
+          </a>
+        </div>
+        <h4>{{ item.prod_name|slice:":24" }}...</h4>
+        <h5>&#8377; {{ item.price|intcomma }}</h5>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Container div 1 ends -->
+
+
+  <div class="mid-sale-img">
+    <a href="category.html">
+      <img src="{% static 'ecommerce/images/SaleImage.png' %}" width="100%" height="auto" alt="">
+    </a>
+  </div>
+
+  <br>
+
+
+  <!-- Container div 2 starts -->
+
+  <div class="container">
+    <h3>Featured Products</h3>
+    <div class="recommended-img">
+      {% for item in result_list|slice:":6" %}
+      <div class="card" style="width: 10rem;">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'product-detail' category=item|to_model_name slug=item.slug %}">
+            <img src="{{ item.image1.url }}" height=80>
+          </a>
+        </div>
+        <h6>{{ item.prod_name|slice:":25" }}...</h6>
+        <p>&#8377; {{ item.price|intcomma }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3>New in Elecronics</h3>
+    <div class="recommended-img">
+      {% for item in electronic_prod|slice:":6" %}
+      <div class="card" style="width: 10rem;">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'product-detail' category=item|to_model_name slug=item.slug %}">
+            <img src="{{ item.image1.url }}" height=80>
+          </a>
+        </div>
+        <h6>{{ item.prod_name|slice:":24" }}...</h6>
+        <p>&#8377; {{ item.price|intcomma }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Container div 2 ends -->
+
+{% endblock %}

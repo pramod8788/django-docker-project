@@ -1,0 +1,38 @@
+{% extends 'seller/base.html' %}
+
+{% load static %}
+
+{% block title %}Seller{% endblock %}
+
+{% block content %}
+<!-- Form Starting  -->
+
+  <div class="container mt-5">
+    <div class="d-flex justify-content-center">
+    <form method="POST" class="w-75 bg-success p-5">
+      {% csrf_token %}
+      <h5 class="text-center text-white">Signup to Continue</h5>
+      <div class="row login mt-4">
+        {% for field in form %}
+          <div class="col-6 mb-4">
+            <label class="form-label text-white">{{ field.label }}</label>
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        {% endfor %}
+        
+        {% if form.errors %}
+          <br>
+          {{ form.non_field_errors }}
+        {% endif %}
+      </div>
+
+      <div class="loginSubmit mt-4">
+          <input class="btn btn-danger btn-outline-light" type="submit" value="Signup">
+      </div>
+    </form>
+    </div>
+  </div>
+    
+<!-- Form Ending  -->
+{% endblock %}

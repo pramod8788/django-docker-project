@@ -1,0 +1,32 @@
+{% extends 'seller/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center my-5">
+    <form method = "POST" class="bg-success p-5 text-white rounded" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="col-12 mb-4">
+            <label class="form-label text-white">{{ field.label }}</label>
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        {% endfor %}
+                
+        {% if errors|length > 0 %}
+        <ul>
+            {% for error in errors %}
+                <li class="error-message color: red; ">{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <input type="submit" value="Send" class="btn btn-outline-warning text-black btn-light px-4 ">
+    </form>
+</div>
+{% endblock %}

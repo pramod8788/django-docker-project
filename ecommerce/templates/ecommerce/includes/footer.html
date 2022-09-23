@@ -1,0 +1,72 @@
+<!-- Footer starts -->
+
+{% load ecommercetags %}
+{% cat_names as category %}
+
+<div class="footer">
+<div class="container">
+    <div class="row">
+    <div class="col p-2">
+        Categories
+        {% for item in category %}
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'category-page' item.category %}">{{ item.category_name }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="col">
+        Help
+        <div class="row">
+        <div class="col">
+            <a href="{% url 'contact-us-page' %}">Contact Us</a>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col">
+            +0141(2456357)
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col">
+            +91(9824563575)
+        </div>
+        </div>
+
+    </div>
+
+    <div class="col">
+        Social
+        <div class="row">
+        <div class="col">
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col">
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col">
+            <a href="https://twitter.com/home" target="_blank">Twitter</a>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="col">
+            <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- Footer ends -->

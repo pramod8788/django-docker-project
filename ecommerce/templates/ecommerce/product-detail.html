@@ -1,0 +1,74 @@
+{% extends 'ecommerce/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+<div class="product-detail mt-5 px-5">
+    <div class="row">
+        <div class="col p-4">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ product.image1.url }}" class="d-block" height=200 alt="{{ product.prod_name }}">
+                        </div>  
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ product.image2.url }}" class="d-block" height=200 alt="{{ product.prod_name }}">
+                        </div>  
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ product.image3.url }}" class="d-block" height=200 alt="{{ product.prod_name }}">
+                        </div>  
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev btn-outline-secondary" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next btn-outline-secondary" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div class="prod-images mt-4">
+                <img class="mx-4" src="{{ product.image1.url }}" height=60>
+                <img class="mx-4" src="{{ product.image2.url }}" height=60>
+                <img class="mx-4" src="{{ product.image3.url }}" height=60>
+            </div>
+
+            <div class="mt-4 mx-5 pb-4">
+                <a class="btn btn-outline-success mx-2 px-5" href="{% url 'buy-now' category=product|to_model_name slug=product.slug %}">Buy Now</a>
+                <a class="btn btn-outline-danger mx-2 px-5" href="{% url 'add-to-cart' category=product|to_model_name slug=product.slug %}">Add to Cart</a>
+            </div>
+        </div>
+        
+        <div class="col">
+            <h4 class="text-secondary">{{ product|to_model_name }} / {{ product.type }}</h4>
+            <h5>{{ product.prod_name }}</h5>
+            <p>&#8377; {{ product.price|intcomma }}</p>
+
+            <br><br>
+            <h6>Product Type: {{ product.type }}</h6>
+            <h6>Color: {{ product.colour }}</h6>
+            {% if product.size != '' %}
+                <h6>Size: {{ product.size }}</h6>
+            {% endif %}
+            <br>
+
+            <h6>Description:</h6>
+            <p>{{ product.info }}</hp>
+        </div>
+    </div>
+</div>
+{% endblock %}

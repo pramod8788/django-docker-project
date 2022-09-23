@@ -1,0 +1,35 @@
+{% extends 'seller/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %} Seller {% endblock %}
+
+{% block content %}
+<!-- Container div 1 starts -->
+
+<div class="container mt-5">
+  {% if products.first|to_model_name == "NoneType" %}
+  <h3>No Products to Show</h3> <br>
+  {% else %}
+  <h3>{{ products.first|to_model_name }}</h3> <br>
+  {% endif %}
+
+  <div class="feature-product">
+    {% for item in products %}
+      <div class="card" style="width: 16rem;">
+        <div class="d-flex justify-content-center">
+          <a href="{% url 'detail' slug=item.slug category=item|to_model_name %}">
+            <img src="{{ item.image1.url }}" height=140>
+          </a>
+        </div>
+        <p class="card-title mt-2">{{ item.prod_name|slice:":35" }}...</p>
+        <small>&#8377; {{ item.price|intcomma }}</small>
+      </div> 
+    {% endfor %}
+  </div> 
+</div>
+
+{% endblock %}   
+

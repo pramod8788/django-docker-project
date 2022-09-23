@@ -1,0 +1,62 @@
+{% extends 'seller/base.html' %}
+
+{% load static %}
+{% load ecommercetags %}
+
+{% block title %} home {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">ADD NEW PRODUCTS</h2>
+    <div class="row">
+        
+        <div class="card" style="width: 16rem;">
+            <div class="d-flex justify-content-center">
+                <a href="">
+                    <img src="{% static 'seller/images/shirt2.jpeg' %}" height=150 alt="{{ item.category_name }}">
+                </a>
+            </div>
+            <h5 class="card-title text-center mt-2">Fashion</h5>
+            <div class="d-flex justify-content-center">
+                <a  class="btn btn-warning" href="{% url 'upload-product' %}">ADD Fashion items</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 16rem;">
+            <div class="d-flex justify-content-center">
+                <a href="">
+                    <img src="{% static 'seller/images/realme.jpeg' %}" height=150 alt="{{ item.category_name }}">
+                </a>
+            </div>
+            <h5 class="card-title text-center mt-2">Mobiles</h5>
+            <div class="d-flex justify-content-center">
+                <a  class="btn btn-warning" href="{% url 'mupload-product' %}">ADD Mobiles items</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 16rem;">
+            <div class="d-flex justify-content-center">
+                <a href="">
+                    <img src="{% static 'seller/images/home.jpeg' %}" height=150 alt="{{ item.category_name }}">
+                </a>
+            </div>
+            <h5 class="card-title text-center mt-2">HomeDecore</h5>
+            <div class="d-flex justify-content-center">
+                <a  class="btn btn-warning" href="{% url 'hdupload-product' %}">ADD HomeDecore items </a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 16rem;">
+            <div class="d-flex justify-content-center">
+                <a href="">
+                    <img src="{% static 'seller/images/electric.jpeg' %}" height=150 alt="{{ item.category_name }}">
+                </a>
+            </div>
+            <h5 class="card-title text-center mt-2">Electronics</h5>
+            <div class="d-flex justify-content-center">
+                <a  class="btn btn-warning" href="{% url 'eupload-product' %}">ADD Electronics items</a>
+            </div>
+        </div>
+      </div>
+</div>
+{% endblock %}   

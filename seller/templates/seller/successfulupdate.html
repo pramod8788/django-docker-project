@@ -1,0 +1,22 @@
+{% extends 'seller/base.html' %}
+
+{% load static %}
+{% load ecommercetags %}
+
+{% block title %} home {% endblock %}
+
+{% block content %}
+
+<div class="success-info">
+    {% if "SuccessfulUpdate" in request.path %}
+        <h3 class="text-center my-5">Your Product is updated Successfully!!</h3>
+    {% else %}
+        <h3 class="text-center my-5">Your Product is deleted Successfully!!</h3>
+    {% endif %}
+    
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-warning btn-outline-light mb-5 px-5" href="{% url 'seller-home' %}">OK</a>
+    </div>
+</div>
+
+{% endblock %}   

@@ -1,0 +1,52 @@
+{% extends 'ecommerce/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+
+<h3 class="text-center mt-5">All {{ category_prod.first|to_model_name }} Products</h3> <br>
+<div class="row mb-4 mx-2">
+    <div class="col-3">
+        <div class="type bg-light p-2 border border-dark">
+            <h5 class="text-center ">Filter Products</h5>
+            <hr>
+            <h6>Sort:</h6>
+            <form method="GET">
+                <button class="btn border-none" name="type_filter" value="price_low">Price Low to High</button>
+            </form>
+            <form method="GET">
+                <button class="btn border-none" name="type_filter" value="price_high">Price High to Low</button>
+            </form>
+
+            <hr>
+            <h6>Category:</h6>
+            {% for item in type_filter %}
+                <form method="GET">
+                    <button class="btn border-none" name="type_filter" value="{{ item }}">{{ item }}</button>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="feature-product">
+            {% for item in category_prod %}
+            <div class="card" style="width: 16rem;">
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'product-detail' category=item|to_model_name slug=item.slug %}">
+                <img src="{{ item.image1.url }}" height=140>
+                </a>
+            </div>
+            <h4>{{ item.prod_name|slice:":15" }}...</h4>
+            <h5>&#8377; {{ item.price|intcomma }}</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

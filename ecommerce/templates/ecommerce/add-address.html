@@ -1,0 +1,74 @@
+{% extends 'ecommerce/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+
+<!-- Form Starting  -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-center px-4">
+                <form method="POST" class="bg-success p-5">
+                    {% csrf_token %}
+                    <h5 class="text-center text-white">Address Details</h5>
+                    <div class="row login mt-4">
+                        {% for field in form %}
+                            <div class="col-6 mb-4">
+                                <label class="form-label text-white">{{ field.label }}</label>
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                        {% endfor %}
+                        
+                        {% if form.errors %}
+                            <br>
+                            {{ form.non_field_errors }}
+                        {% endif %}
+                    </div>
+
+                    <div class="loginSubmit mt-4">
+                        <input class="btn btn-danger btn-outline-light px-4" type="submit" value="Add New Address">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-3 mb-5">
+            <h4 class="text-center mb-4">Saved Address</h4>
+            {% if old_address %}
+                {% for item in old_address %}
+                <div class="address-class bg-info mb-4 p-4">
+                    <a href="{% url "payment-page" item.id %}" class="text-decoration-none btn-outline-dark">
+                        <div class="address">
+                            <h6>{{ item.address_type }}</h6>
+                            {{ item.full_name }} <br>
+                            {{ item.phone_num }} <br>
+                            {{ item.building_num_name }}, 
+                            {{ item.area_colony }},
+                            {% if item.landmark %}
+                                {{ item.landmark }},
+                            {% endif %}
+                            {{ item.city }},
+                            {{ item.state }},
+                            (Pincode: {{ item.pincode }})
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="address-class bg-info mb-4 p-4">
+                    <h5>Looks like you have not any saved address.</h5>
+                    <p>Add new address to continue.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- Form Ending  -->  
+
+{% endblock %}

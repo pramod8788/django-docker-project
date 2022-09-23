@@ -1,0 +1,39 @@
+{% extends 'seller/base.html'%}
+
+{% load static %}
+
+{% block title %} seller {% endblock %}
+
+{% block content %}
+
+<div class="container bg-success p-5 text-white mt-5">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h5 class="text-center">Add New Product</h5>
+    <div class="row">
+      {% for field in form %}
+        <div class="col-6">
+          <label class="form-label mt-4">{{ field.label }}</label>
+          {{ field }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+
+      {% if form.errors%}
+        <br>
+        {{ form.non_field_errors }}
+      {% endif %}
+    </div>
+
+    <div class="loginSubmit mt-5">
+      <input class="btn btn-danger btn-outline-light" type="submit" value="Upload">
+    </div>
+  </form>
+</div>
+
+{% comment %} <script>
+  document.getElementById("id_image1").className = "form-control";
+  document.getElementById("id_image2").className = "form-control";
+  document.getElementById("id_image1").className = "form-control";
+</script> {% endcomment %}
+{% endblock %}

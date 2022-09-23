@@ -1,0 +1,202 @@
+/* Index Page CSS starting */
+
+/* nabar CSS starts  */
+
+.navbar-brand:hover{
+    background-color: white;
+}
+
+.dropdown-menu{
+    text-align: center;
+}
+
+.dropdown-item:hover{
+    background-color: rgb(78, 153, 2);
+}
+
+.nav-link:hover{
+    background-color: rgb(78, 153, 2);
+}
+
+.dropdown-btn{
+    background-color: #212529;
+}
+
+.dropdown-btn:hover{
+    background-color: rgb(78, 153, 2);
+}
+
+#search-btn{
+    margin-left: -5%;
+}
+
+#search-btn:hover{
+    color: white;
+    background-color: rgb(78, 153, 2);
+}
+
+
+/* Carousel CSS Starts  */
+
+.carousel-inner img{
+    position: absolute;
+    z-index: -1;
+}
+
+.carousel-inner a{
+    text-decoration: none;
+}
+
+.carousel-item h2{
+    text-align: center;
+    padding: 3%;
+    margin-left: 25%;
+    margin-top: 6%;
+    width: 50%;
+    color: white;
+    background-color: rgb(78, 153, 2, 0.6);
+    border-radius: 3%;
+}
+
+.carousel-item p{
+    text-align: center;
+    margin-top: 17%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3%;
+    font-size: x-large;
+}
+
+
+/* Container div CSS Starts */
+
+.card{
+    padding: 1%;
+    margin-left: 1.5%;
+    display: inline-block;
+    border: none;
+    margin-bottom: 3%;
+}
+
+.card h4{
+    padding-top: 5%;
+    color: rgb(29, 28, 28);
+}
+
+.card h6{
+    padding-top: 5%;
+    color: rgb(59, 58, 58);
+}
+
+.card:hover{
+    transition: box-shadow 0.5s;
+    box-shadow: 5px 5px 50px grey;
+    transform: translateY(-2%);
+}
+
+.container h3{
+    margin-top: 2%;
+    text-align: center;
+}
+
+
+/* Footer div CSS starts */
+
+.footer{
+    margin-top: 2%;
+    padding: 2%;
+    background-color: #212529;
+    color: white;
+}
+
+.footer a{
+    padding: 1% 0%;
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover{
+    text-decoration: none;
+    padding: 1% 1%;
+    color: white;
+    border-radius: 5%;
+    background-color: rgb(78, 153, 2, 0.6);
+}
+
+/* Footer div CSS ends */
+
+
+/* Index Page CSS ending */
+
+.loginSubmit button{
+    text-decoration: none;
+    padding: 2% 5%;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border: none;
+    border-radius: 3%;
+    background-color: rgb(78, 153, 2);
+}
+
+.loginSubmit a{
+    text-decoration: none;
+    padding: 2.60% 5%;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border: none;
+    border-radius: 3%;
+    background-color: rgb(78, 153, 2);
+}
+
+.loginSubmit button:hover, 
+.loginSubmit a:hover{
+    color: white;
+    background-color: rgb(51, 99, 4);
+    transition: box-shadow 0.5s;
+    box-shadow: 5px 5px 90px 5px rgb(113, 199, 0);
+}
+
+
+.product-detail .carousel-inner{
+    height: 200;
+    width: auto;
+}
+
+.product-detail .carousel-inner img{
+    position: relative;
+    z-index: 0;
+}
+
+.login .errorlist{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.login .errorlist li ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.UpdateProducts a{
+    color: greenyellow;
+    text-decoration: none;
+}
+
+.UpdateProducts a:hover{
+    color: rgb(171, 187, 146);
+}
+
+.success-info{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

@@ -1,0 +1,18 @@
+{% extends 'seller/base.html'%}
+
+{% load static %}
+
+{% block title %} seller {% endblock %}
+
+{% block content %}
+<div class="success-info">
+    <h4 class="text-center my-5">Are you sure you want to <b>DELETE</b> the item?</h4>
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-outline-danger px-5 mb-5 mx-2" value="YES">
+            <a class="btn btn-outline-success px-5 mb-5 mx-2" href="{% url 'seller-home' %}">NO</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

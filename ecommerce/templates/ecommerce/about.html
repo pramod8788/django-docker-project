@@ -1,0 +1,57 @@
+{% extends 'ecommerce/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load ecommercetags %}
+
+{% block title %}MyCart{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">About Us</h3>
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'seller/images/1.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Sell in your neighbourhood</h5>
+                    <p class="card-text">
+                        Register your physical store on Amazon.in and sell 
+                        to more customers in your local area
+                        Become eligible for the “Prime Badge”.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'seller/images/2.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Earn rewards by achieving milestones</h5>
+                    <p class="card-text">
+                        Receive certain rewards by participating in reward-earning offers/contests
+                        Grow on Amazon and make additional money through rewards
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'seller/images/tin.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Sell in bulk to businesses (B2B Selling)</h5>
+                    <p class="card-text">
+                        Reach lakhs of GST verified business customers
+                        Allows you to set pricing for large quantities of goods so that you 
+                        can sell on bulk all over India
+                        Provides support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!-- Navbar starting -->
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="navbar-brand  mx-3 px-3" href="{% url 'seller-home' %}">
+                    <img src="{% static 'seller/images/Logo.png' %}" alt="" width="45" height="28">
+                </a>
+
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'seller-home' %}">Home</a>
+                </li>
+
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'seller-service' %}">Services</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'seller-logout' %}">Logout ({{ user }})</a>
+                </li>
+
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'upload-newproduct' %}">Add Product</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'seller-login' %}">Seller Login</a>
+                </li>
+
+                <li class="nav-item  mx-3">
+                    <a class="nav-link active" aria-current="page" href="{% url 'seller-signup' %}">Signup</a>
+                </li>
+                {% endif %}
+            </ul>
+            
+            <form class="d-flex" action="search.html">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" id="search-btn" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar ending -->
